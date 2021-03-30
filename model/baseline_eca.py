@@ -59,8 +59,8 @@ class ECA(nn.Module):
         for i in range(b):
             logits_no_pad.append(logits[i,:lengths[i],:])
             labels_no_pad.append(labels[i,:lengths[i],:])
-        logits = torch.vstack(logits_no_pad)
-        labels = torch.vstack(labels_no_pad)
+        logits = torch.cat(logits_no_pad, dim=0)
+        labels = torch.cat(labels_no_pad, dim=0)
 
         # Slot Decoder
         decoder_hidden = encoder_hidden

@@ -29,7 +29,7 @@ class Config:
     model_path = None if not retrain else "checkpoints/best_{}_{}.pth".format(datatype, data_mode)
 
     maxlen = 60
-    batch_size = 4 #CaBERT-SLU: e2e 16/8/4 sgd 4  # multi 128 eca 8 
+    batch_size = 8 #CaBERT-SLU: e2e 16/8 sgd 4  # multi 128 eca 8 
     epochs = 20
     learning_rate_bert = 2e-5 #1e-3
     learning_rate_classifier = 5e-3
