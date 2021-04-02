@@ -1,13 +1,6 @@
 # CaBERT-SLU
 Context-Aware Hierarchical BERT Fushion Network for multiple dialog act detection
 
-## Parse Data
-
-1. Go to data/
-2. Run the following command to create parsed data
-    >
-        python dialogue_data.py
-
 ## Training/Testing
 
 1. To train
@@ -35,6 +28,14 @@ length of list is total layers.
     Change to model ECA
     >
         python bert_context.py train
+
+## Parse Data (Optional: data is provided in data/)
+
+1. Get
+2. Go to data/
+2. Run the following command to create parsed data
+    >
+        python dialogue_data.py
 
 
 
