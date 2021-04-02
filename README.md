@@ -31,8 +31,7 @@ length of list is total layers.
 
 ## Parse Data (Optional: data is provided in data/)
 
-1. Get
-2. Go to data/
+1. Go to data/
 2. Run the following command to create parsed data
     >
         python dialogue_data.py
