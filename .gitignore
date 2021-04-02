@@ -130,4 +130,3 @@ dmypy.json
 
 
 *.pth
-data/sgd_dialogue/turns.pkl
