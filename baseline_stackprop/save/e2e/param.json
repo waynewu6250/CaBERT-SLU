@@ -1,0 +1,22 @@
+{
+ "data_dir": "data_with_slots/e2e",
+ "save_dir": "save/e2e",
+ "random_state": 0,
+ "gpu": false,
+ "num_epoch": 20,
+ "batch_size": 16,
+ "l2_penalty": 1e-06,
+ "learning_rate": 0.001,
+ "dropout_rate": 0.4,
+ "intent_forcing_rate": 0.9,
+ "differentiable": false,
+ "slot_forcing_rate": 0.9,
+ "word_embedding_dim": 64,
+ "encoder_hidden_dim": 256,
+ "intent_embedding_dim": 8,
+ "slot_embedding_dim": 32,
+ "slot_decoder_hidden_dim": 64,
+ "intent_decoder_hidden_dim": 64,
+ "attention_hidden_dim": 1024,
+ "attention_output_dim": 128
+}

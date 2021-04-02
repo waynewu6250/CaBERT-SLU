@@ -66,8 +66,8 @@ def train(**kwargs):
     config = BertConfig(vocab_size_or_config_json_file=32000, hidden_size=768,
         num_hidden_layers=12, num_attention_heads=12, intermediate_size=3072)
     
-    model = BertContextNLU(config, opt, len(dic), len(slot_dic))
-    # model = ECA(opt, len(dic), len(slot_dic))
+    # model = BertContextNLU(config, opt, len(dic), len(slot_dic))
+    model = ECA(opt, len(dic), len(slot_dic))
     
     if opt.model_path:
         model.load_state_dict(torch.load(opt.model_path))

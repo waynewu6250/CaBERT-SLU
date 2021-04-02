@@ -10,8 +10,50 @@ import os
 import csv
 import spacy
 from nltk.tokenize import word_tokenize 
-from train_data import Data
+from transformers import BertTokenizer, BertModel, BertForMaskedLM
 import time 
+
+class Data:
+
+    def __init__(self, data_path, rawdata_path, intent2id_path):
+
+        self.data_path = data_path
+        self.rawdata_path = rawdata_path
+        self.intent2id_path = intent2id_path
+        self.REPLACE_BY_SPACE_RE = re.compile(r'[/(){}\[\]\|@,;]')
+        self.BAD_SYMBOLS_RE = re.compile(r'[^0-9a-z #+_]')
+        self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
+
+    #==================================================#
+    #                   Text Prepare                   #
+    #==================================================#
+    
+    #pure virtual function
+    def prepare_text(self):
+        raise NotImplementedError("Please define virtual function!!")
+
+    # prepare text
+    def text_prepare(self, text, mode):
+        """
+            text: a string       
+            return: modified string
+        """
+        
+        text = text.lower() # lowercase text
+        text = re.sub(self.REPLACE_BY_SPACE_RE, ' ', text) # replace REPLACE_BY_SPACE_RE symbols by space in text
+        text = re.sub(self.BAD_SYMBOLS_RE, '', text) # delete symbols which are in BAD_SYMBOLS_RE from text
+        text = re.sub(r"[ ]+", " ", text)
+        text = re.sub(r"\!+", "!", text)
+        text = re.sub(r"\,+", ",", text)
+        text = re.sub(r"\?+", "?", text)
+        if mode == "Bert":
+            text = "[CLS] " + text + " [SEP]"
+            tokenized_text = self.tokenizer.tokenize(text)
+            tokenized_ids = self.tokenizer.convert_tokens_to_ids(tokenized_text)
+            text = tokenized_ids
+        return text
+
+##################################
 
 class E2EData(Data):
 
@@ -470,7 +512,7 @@ if __name__ == "__main__":
     rawdata_path = "e2e_dialogue/dialogue_data_multi_with_slots.pkl"
     intent2id_path = "e2e_dialogue/intent2id_multi_with_tokens.pkl"
     slot2id_path = "e2e_dialogue/slot2id.pkl"
-    data = E2EData(data_path, rawdata_path, intent2id_path, slot2id_path, done=False)
+    data = E2EData(data_path, rawdata_path, intent2id_path, slot2id_path, done=True)
     print(data.intent2id)
     print(data.slot2id)
     # for utt, utt_ids, slot, slot_ids, intents in data.train_data[10]:
@@ -493,7 +535,7 @@ if __name__ == "__main__":
     intent2id_path = "sgd_dialogue/intent2id_multi_with_tokens.pkl"
     slot2id_path = "sgd_dialogue/slot2id.pkl"
     turn_path = "sgd_dialogue/turns.pkl"
-    data = SGDData(data_path, rawdata_path, intent2id_path, slot2id_path, turn_path, done=False)
+    data = SGDData(data_path, rawdata_path, intent2id_path, slot2id_path, turn_path, done=True)
     # print(data.turn_data_all['turns'][0])
     # print(data.train_data[100])
     print(data.intent2id)
