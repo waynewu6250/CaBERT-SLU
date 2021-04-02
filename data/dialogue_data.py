@@ -512,9 +512,9 @@ if __name__ == "__main__":
     rawdata_path = "e2e_dialogue/dialogue_data_multi_with_slots.pkl"
     intent2id_path = "e2e_dialogue/intent2id_multi_with_tokens.pkl"
     slot2id_path = "e2e_dialogue/slot2id.pkl"
-    data = E2EData(data_path, rawdata_path, intent2id_path, slot2id_path, done=True)
-    print(data.intent2id)
-    print(data.slot2id)
+    data = E2EData(data_path, rawdata_path, intent2id_path, slot2id_path, done=False)
+    # print(data.intent2id)
+    # print(data.slot2id)
     # for utt, utt_ids, slot, slot_ids, intents in data.train_data[10]:
     #     print(utt)
     #     print(utt_ids)
@@ -522,11 +522,11 @@ if __name__ == "__main__":
     #     print(slot_ids)
     #     print(intents)
     #     print('--------------')
-    for utt_ids, slot_ids, intents in data.train_data[10]:
-        print(utt_ids)
-        print(slot_ids)
-        print(intents)
-        print('--------------')
+    # for utt_ids, slot_ids, intents in data.train_data[10]:
+    #     print(utt_ids)
+    #     print(slot_ids)
+    #     print(intents)
+    #     print('--------------')
 
 
     # sgd dataset
@@ -535,11 +535,11 @@ if __name__ == "__main__":
     intent2id_path = "sgd_dialogue/intent2id_multi_with_tokens.pkl"
     slot2id_path = "sgd_dialogue/slot2id.pkl"
     turn_path = "sgd_dialogue/turns.pkl"
-    data = SGDData(data_path, rawdata_path, intent2id_path, slot2id_path, turn_path, done=True)
+    data = SGDData(data_path, rawdata_path, intent2id_path, slot2id_path, turn_path, done=False)
     # print(data.turn_data_all['turns'][0])
     # print(data.train_data[100])
-    print(data.intent2id)
-    print(data.slot2id)
+    # print(data.intent2id)
+    # print(data.slot2id)
     # for utt_token, utt_ids, slot_nums, slots_ids, intents in data.train_data[10]:
     #     print(utt_token)
     #     print(utt_ids)
@@ -547,8 +547,8 @@ if __name__ == "__main__":
     #     print(slots_ids)
     #     print(intents)
     #     print('--------------')
-    for utt_ids, slot_ids, intents in data.train_data[10]:
-        print(utt_ids)
-        print(slot_ids)
-        print(intents)
-        print('--------------')
+    # for utt_ids, slot_ids, intents in data.train_data[10]:
+    #     print(utt_ids)
+    #     print(slot_ids)
+    #     print(intents)
+    #     print('--------------')
