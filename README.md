@@ -1,21 +1,22 @@
 # CaBERT-SLU
 Context-Aware Hierarchical BERT Fushion Network for multiple dialog act detection
 
+This code demonstrates how to train/test on e2e/sgd data.
+
 ## Training/Testing
 
 1. To train
     >
         python bert_context.py train
 
-2. To test: select mode: data/validation
+2. To test: select mode in config.py: data/validation
     >
         python bert_context.py test 
 
 3. To visualize:
 
-bert_model_context.py returns ffscores, store at ffscores list of (b, h, t, t) <br>
-length of list is total layers.
-
+    bert_model_context.py will return ffscores and store it as a list of size (batch, head, time_step, time_step) tensors. <br>
+    The length of list is the number of total attention layers.
 
 ## Baselines
 
@@ -25,7 +26,7 @@ length of list is total layers.
 
 2. ECA:
 
-    Change to model ECA
+    Change model to ECA
     >
         python bert_context.py train
 
