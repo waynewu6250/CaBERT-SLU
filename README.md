@@ -1,9 +1,21 @@
-# CaBERT-SLU
-Context-Aware Hierarchical BERT Fushion Network for multiple dialog act detection
+# Context-Aware Hierarchical BERT Fushion Network for multiple dialog act detection (CaBERT-SLU)
 
-This code demonstrates how to train/test on e2e/sgd data.
+* This repository provides the code for training and infering CaBERT-SLU framework with datasets MDC and SGD.
+* Pytorch implementation of CaBERT-SLU and other baseline models.
+* The paper is available and will be presented at Interspeech 2021.
 
-## Training/Testing
+---
+
+![Alt text](model.jpg)
+
+In this work, we present a context-aware hierarchical BERT fusion network (CaBERT-SLU) to exploit dialog history for joint dialog act detection and slot tagging tasks for spoken language understanding.
+
+Simply, CaBERT-SLU will extract both utterance and turn-level information to identify multiple dialog acts and exploit a slot tagger to predict slots during the entire dialog. It achieves state-of-the-art performance (until June 2021) over several competitive baseline models.
+
+
+
+
+## TO USE: Training/Testing
 
 1. To train
     >
