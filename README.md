@@ -2,7 +2,7 @@
 
 * This repository provides the code for training and infering CaBERT-SLU framework with datasets MDC and SGD.
 * Pytorch implementation of CaBERT-SLU and other baseline models.
-* The paper is available and will be presented at Interspeech 2021.
+* The paper is available and will be presented at [Interspeech 2021](https://www.interspeech2021.org/).
 
 ---
 
