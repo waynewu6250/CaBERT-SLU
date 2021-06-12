@@ -1,7 +1,8 @@
 # Context-Aware Hierarchical BERT Fushion Network for multiple dialog act detection (CaBERT-SLU)
 
-* This repository provides the code for training and infering CaBERT-SLU framework with datasets MDC and SGD.
+* This repository provides the code for training and inferring CaBERT-SLU framework with datasets MDC and SGD.
 * Pytorch implementation of CaBERT-SLU and other baseline models.
+* State-of-the-art results for joint multi dialog act and slot predictions in SLU.
 * The paper is available and will be presented at [Interspeech 2021](https://www.interspeech2021.org/).
 
 ---
@@ -12,6 +13,26 @@ In this work, we present a context-aware hierarchical BERT fusion network (CaBER
 
 Simply, CaBERT-SLU will extract both utterance and turn-level information to identify multiple dialog acts and exploit a slot tagger to predict slots during the entire dialog. It achieves state-of-the-art performance (until June 2021) over several competitive baseline models.
 
+## Visualization:
+
+![Alt text](data/vis.jpg)
+
+Example of utterance attention visualization for a dialog.
+
+---
+
+
+## Dataset
+
+1. Microsoft Dialogue Challenge (E2E): (Provided in raw_datasets/)
+
+   https://github.com/xiul-msr/e2e_dialog_challenge
+
+2. The Schema-Guided Dialogue Dataset
+   
+   https://github.com/google-research-datasets/dstc8-schema-guided-dialogue
+
+   Download the dataset by cloning the repository in raw_dataset/
 
 
 
