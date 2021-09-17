@@ -27,6 +27,7 @@ def train(**kwargs):
     # attributes
     for k, v in kwargs.items():
         setattr(opt, k, v)
+    np.random.seed(0)
     
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     torch.backends.cudnn.enabled = False
@@ -240,6 +241,7 @@ def test(**kwargs):
     # attributes
     for k, v in kwargs.items():
         setattr(opt, k, v)
+    np.random.seed(0)
 
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     torch.backends.cudnn.enabled = False
@@ -251,6 +253,8 @@ def test(**kwargs):
     with open(opt.dic_path, 'rb') as f:
         dic = pickle.load(f)
     reverse_dic = {v: k for k,v in dic.items()}
+    with open(opt.slot_path, 'rb') as f:
+        slot_dic = pickle.load(f)
     with open(opt.train_path, 'rb') as f:
         train_data = pickle.load(f)
     if opt.test_path:
@@ -277,8 +281,9 @@ def test(**kwargs):
                 dialogue_id[counter] = dialogue_counter
                 counter += 1
             dialogue_counter += 1
-        X, y, _ = zip(*all_data)
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+        indices = np.random.permutation(len(all_data))
+        X_train = np.array(all_data)[indices[:int(len(all_data)*0.7)]]#[:10000]
+        X_test = np.array(all_data)[indices[int(len(all_data)*0.7):]]#[:100]
 
     X_train, mask_train = load_data(X_train)
     X_test, mask_test = load_data(X_test)
@@ -287,7 +292,7 @@ def test(**kwargs):
     config = BertConfig(vocab_size_or_config_json_file=32000, hidden_size=768,
         num_hidden_layers=12, num_attention_heads=12, intermediate_size=3072)
     
-    model = BertEmbedding(config, len(dic))
+    model = MULTI(opt, len(dic), len(slot_dic))
     if opt.model_path:
         model.load_state_dict(torch.load(opt.model_path))
         print("Pretrained model has been loaded.\n")
