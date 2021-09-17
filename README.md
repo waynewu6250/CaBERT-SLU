@@ -1,9 +1,9 @@
 # Context-Aware Hierarchical BERT Fushion Network for multiple dialog act detection (CaBERT-SLU)
 
-* This repository provides the code for training and inferring CaBERT-SLU framework with datasets MDC and SGD.
-* Pytorch implementation of CaBERT-SLU and other baseline models.
-* State-of-the-art results for joint multi dialog act and slot predictions in SLU.
-* The paper is available and will be presented at [Interspeech 2021](https://www.interspeech2021.org/).
+* This repository provides the code for training and inferencing the CaBERT-SLU framework with datasets MDC and SGD.
+* A simple pytorch implementation of CaBERT-SLU and other baseline models.
+* State-of-the-art results for joint multi dialog act and slot predictions in SLU (Until Aug 2021).
+* The paper is available here: https://www.isca-speech.org/archive/interspeech_2021/wu21d_interspeech.html and was presented at [Interspeech 2021](https://www.interspeech2021.org/).
 
 ---
 
@@ -42,7 +42,7 @@ Example of utterance attention visualization for a dialog.
     >
         python bert_context.py train
 
-2. To test: select mode in config.py: data/validation
+2. To test: select mode in `config.py`: data/validation
     >
         python bert_context.py test 
 
@@ -71,5 +71,16 @@ Example of utterance attention visualization for a dialog.
         python dialogue_data.py
 
 
+If you use these models, please cite the following paper:
+```
+@inproceedings{wu21d_interspeech,
+  author={Ting-Wei Wu and Ruolin Su and Biing-Hwang Juang},
+  title={{A Context-Aware Hierarchical BERT Fusion Network for Multi-Turn Dialog Act Detection}},
+  year=2021,
+  booktitle={Proc. Interspeech 2021},
+  pages={1239--1243},
+  doi={10.21437/Interspeech.2021-95}
+}
+```
 
     
